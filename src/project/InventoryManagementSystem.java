@@ -51,8 +51,7 @@ public class InventoryManagementSystem {
         String updateQuery = "UPDATE product_batches SET quantity = ? WHERE id = ?";
 
         try (Connection connection = DBConnection.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(selectQuery)) {
+             PreparedStatement selectStmt = connection.prepareStatement(selectQuery)) {
 
             while (quantity > 0 && resultSet.next()) {
                 int id = resultSet.getInt("id");
