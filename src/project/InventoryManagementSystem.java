@@ -53,8 +53,10 @@ public class InventoryManagementSystem {
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement selectStmt = connection.prepareStatement(selectQuery)) {
 
-            while (quantity > 0 && resultSet.next()) {
-                int id = resultSet.getInt("id");
+            selectStmt.setInt(1, id);
+            ResultSet resultSet = selectStmt.executeQuery();
+
+            if (resultSet.next()) {
                 int availableQty = resultSet.getInt("quantity");
 
                 if (availableQty <= quantity) {
