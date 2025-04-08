@@ -59,9 +59,9 @@ public class InventoryManagementSystem {
             if (resultSet.next()) {
                 int availableQty = resultSet.getInt("quantity");
 
-                if (availableQty <= quantity) {
-                    quantity -= availableQty;
-
+                if (availableQty < quantity) {
+                    System.out.println("SELL ERROR: Only " + availableQty + " units available in batch " + id);
+                } else if (availableQty == quantity) {
                     try (PreparedStatement delStmt = connection.prepareStatement(deleteQuery)) {
                         delStmt.setInt(1, id);
                         delStmt.executeUpdate();
