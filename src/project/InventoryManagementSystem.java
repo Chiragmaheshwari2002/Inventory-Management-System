@@ -45,8 +45,8 @@ public class InventoryManagementSystem {
         }
     }
 
-    public void sell(int quantity) {
-        String selectQuery = "SELECT * FROM product_batches ORDER BY expiry_date ASC";
+    public void sell(int id, int quantity) {
+        String selectQuery = "SELECT quantity FROM product_batches WHERE id = ?";
         String deleteQuery = "DELETE FROM product_batches WHERE id = ?";
         String updateQuery = "UPDATE product_batches SET quantity = ? WHERE id = ?";
 
