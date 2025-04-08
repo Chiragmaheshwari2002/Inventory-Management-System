@@ -171,17 +171,24 @@ public class InventoryManagementSystem {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter batch ID: ");
-                    int id = sc.nextInt();
-                    sc.nextLine();  // consume newline
-                    System.out.print("Enter product name: ");
-                    String name = sc.nextLine();
-                    System.out.print("Enter quantity: ");
-                    int qty = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Enter expiry date (YYYY-MM-DD): ");
-                    String exp = sc.nextLine();
-                    stock(id, name, qty, exp);
+                    while(true){
+                        System.out.print("Enter batch ID: ");
+                        int id = sc.nextInt();
+                        sc.nextLine();  // consume newline
+                        System.out.print("Enter product name: ");
+                        String name = sc.nextLine();
+                        System.out.print("Enter quantity: ");
+                        int qty = sc.nextInt();
+                        sc.nextLine();
+                        System.out.print("Enter expiry date (YYYY-MM-DD): ");
+                        String exp = sc.nextLine();
+                        stock(id, name, qty, exp);
+                        System.out.print("Wants to add more batch(Y/N): ");
+                        String str = sc.next();
+                        if(str.toUpperCase().equals("N")){
+                            break;
+                        }
+                    }
                     break;
                 case 2:
                     System.out.print("Enter quantity to sell: ");
