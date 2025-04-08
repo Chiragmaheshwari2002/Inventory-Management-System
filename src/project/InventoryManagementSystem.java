@@ -192,6 +192,8 @@ public class InventoryManagementSystem {
                     }
                     break;
                 case 2:
+                    System.out.print("Enter the product id: ");
+                    int id = sc.nextInt();
                     System.out.print("Enter quantity to sell: ");
                     int q = sc.nextInt();
                     sell(q);
